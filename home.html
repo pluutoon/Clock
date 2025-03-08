@@ -23,12 +23,16 @@
                 var hours = date.getHours();
                 var minutes = date.getMinutes();
                 var seconds = date.getSeconds();
-                if (seconds.toString().length == 1) {
-                    var strSeconds = "0"+seconds;
-                } else {
-                    var strSeconds = seconds;
+                var format = [hours, minutes, seconds];
+                var formatStr = ["", "", ""];
+                for (let i = 0; i < format.length; i++) {
+                    if (format[i].toString().length == 1) {
+                        formatStr[i] = "0" + format[i];
+                    } else {
+                        formatStr[i] = format[i].toString();
+                    }
                 }
-                document.getElementById('time').innerText = hours + ":" + minutes + ":" + strSeconds;
+                document.getElementById('time').innerText = formatStr[0] + ":" + formatStr[1] + ":" + formatStr[2];
             }
             refreshtime ()
             setInterval(refreshtime, 1000)
