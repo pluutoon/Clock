@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-size: 8vw;
+        }
+    </style>
+</head>
+<body onload="displayTime()">
+    <span id="time"></span>
+    <script>
+        function displayTime(){
+            function refreshtime () {
+                var date = new Date();
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var seconds = date.getSeconds();
+                if (seconds.toString().length == 1) {
+                    var strSeconds = "0"+seconds;
+                } else {
+                    var strSeconds = seconds;
+                }
+                document.getElementById('time').innerText = hours + ":" + minutes + ":" + strSeconds;
+            }
+            refreshtime ()
+            setInterval(refreshtime, 1000)
+        }
+    </script>
+</body>
+</html>
